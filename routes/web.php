@@ -22,11 +22,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Category
         Route::resource('category', CategoryController::class);
-        Route::delete('category/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+        Route::get('/admin/category/search', [CategoryController::class, 'search'])->name('category.search');
+
 
         // Product
         Route::resource('product', ProductController::class);
-        Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
-
-        
+        Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('product.delete');     
 });

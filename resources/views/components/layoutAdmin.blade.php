@@ -84,7 +84,7 @@
 
             let sidebarOpen = true;
 
-            
+
 
             const showDeleteConfirmation = () => {
                 Swal.fire({
@@ -115,6 +115,8 @@
                 });
                 sidebar.classList.toggle('sidebar-closed', !sidebarOpen);
             });
+
+
         });
     </script>
 </x-layout>
