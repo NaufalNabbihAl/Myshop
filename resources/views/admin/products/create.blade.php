@@ -37,9 +37,9 @@
                     </label>
                 </div>
 
-                @foreach (['nama', 'warna', 'stok'] as $field)
+                @foreach (['nama', 'warna', 'stok', 'ukuran', 'harga'] as $field)
                     <div class="relative">
-                        <input type="{{ $field === 'stok' ? 'number' : 'text' }}" id="{{ $field }}"
+                        <input type="{{in_array($field, ['stok', 'harga']) ? 'number' : 'text' }}" id="{{ $field }}"
                             name="{{ $field }}"
                             class="peer w-full px-4 py-3 rounded-lg border-2 border-gray-200 text-gray-700 placeholder-transparent focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
                             placeholder="{{ ucfirst($field) }}" required autocomplete="off">
@@ -55,6 +55,9 @@
                         class="peer w-full px-4 py-3 rounded-lg border-2 border-gray-200 text-gray-700 placeholder-transparent focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300"
                         required>
                         <option value="" disabled selected>Select a category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
                     <label for="category"
                         class="absolute left-3 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-blue-500">
